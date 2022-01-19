@@ -3,6 +3,7 @@ schema
   @core(feature: "https://specs.apollo.dev/join/v0.1", for: EXECUTION)
 {
   query: Query
+  mutation: Mutation
 }
 
 directive @core(as: String, feature: String!, for: core__Purpose) repeatable on SCHEMA
@@ -14,6 +15,14 @@ directive @join__graph(name: String!, url: String!) on ENUM_VALUE
 directive @join__owner(graph: join__Graph!) on INTERFACE | OBJECT
 
 directive @join__type(graph: join__Graph!, key: join__FieldSet) repeatable on INTERFACE | OBJECT
+
+type AuthToken {
+  token: String!
+}
+
+type Mutation {
+  login(password: String!, username: String!): AuthToken! @join__field(graph: ACCOUNTS)
+}
 
 type Product
   @join__owner(graph: PRODUCTS)
@@ -27,7 +36,7 @@ type Product
 }
 
 type Query {
-  me: User! @join__field(graph: ACCOUNTS)
+  me(id: ID!): User! @join__field(graph: ACCOUNTS)
   topProducts: [Product!]! @join__field(graph: PRODUCTS)
 }
 
@@ -43,6 +52,7 @@ type User
   @join__type(graph: REVIEWS, key: "id")
 {
   id: ID! @join__field(graph: ACCOUNTS)
+  password: String! @join__field(graph: ACCOUNTS)
   reviews: [Review!]! @join__field(graph: REVIEWS)
   username: String! @join__field(graph: ACCOUNTS)
 }

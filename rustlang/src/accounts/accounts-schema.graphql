@@ -1,7 +1,17 @@
 extend type Query {
-	me: User!
+  me(id: ID!): User!
 }
+
+extend type Mutation {
+  login(username: String!, password: String!): AuthToken!
+}
+
+type AuthToken {
+  token: String!
+}
+
 type User @key(fields: "id") {
-	id: ID!
-	username: String!
+  id: ID!
+  username: String!
+  password: String!
 }

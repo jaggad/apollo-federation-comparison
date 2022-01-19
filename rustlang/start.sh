@@ -22,12 +22,6 @@ REVIEWS_PID=$!
 
 sleep 1
 
-rover subgraph introspect http://localhost:4001 > ./src/accounts/accounts-schema.graphql
-rover subgraph introspect http://localhost:4002 > ./src/products/products-schema.graphql
-rover subgraph introspect http://localhost:4003 > ./src/reviews/reviews-schema.graphql
-
-sleep 1
-
 rover supergraph compose --config ./src/router/supergraph.yaml > ./src/router/supergraph-schema.graphql
 
 sleep 1

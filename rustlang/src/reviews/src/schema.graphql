@@ -1,9 +1,0 @@
-type Query {
-
-}
-
-type Review {
-    body: String
-    author: User
-    product: Product
-}
