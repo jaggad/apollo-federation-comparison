@@ -1,0 +1,93 @@
+version: "2.3"
+services:
+  router:
+    restart: on-failure
+    build:
+      context: ./src/router
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    expose:
+      - 4000
+    depends_on:
+      - accounts
+      - products
+      - reviews
+    networks:
+      - api_network
+  accounts:
+    restart: on-failure
+    build:
+      context: ./src/accounts
+      dockerfile: Dockerfile
+    ports:
+      - "4001:4001"
+    expose:
+      - 4001
+    depends_on:
+      - db
+    networks:
+      - api_network
+    links:
+      - db
+    environment:
+      DATABASE_URL: "postgres://postmaster:password@db:5432"
+      RUST_BACKTRACE: 1
+  products:
+    restart: on-failure
+    build:
+      context: ./src/products
+      dockerfile: Dockerfile
+    ports:
+      - "4002:4002"
+    expose:
+      - 4002
+    depends_on:
+      - db
+    networks:
+      - api_network
+    links:
+      - db
+    environment:
+      DATABASE_URL: "postgres://postmaster:password@db:5432"
+      RUST_BACKTRACE: 1
+  reviews:
+    restart: on-failure
+    build:
+      context: ./src/reviews
+      dockerfile: Dockerfile
+    ports:
+      - "4003:4003"
+    expose:
+      - 4003
+    depends_on:
+      - db
+    networks:
+      - api_network
+    links:
+      - db
+    environment:
+      DATABASE_URL: "postgres://postmaster:password@db:5432"
+      RUST_BACKTRACE: 1
+  db:
+    image: postgres:12
+    mem_limit: 1536MB
+    mem_reservation: 1G
+    command: ["postgres", "-c", "log_statement=all", "-c", "log_destination=stderr"]
+    environment:
+      POSTGRES_USER: postmaster
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    networks:
+      - api_network
+    volumes:
+      - ./db/:/docker-entrypoint-initdb.d/
+      - db-data:/var/lib/postgresql/data
+ 
+networks:
+  api_network:
+    driver: bridge
+ 
+volumes:
+  db-data:

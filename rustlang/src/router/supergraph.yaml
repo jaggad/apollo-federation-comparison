@@ -1,13 +1,13 @@
 subgraphs:
   accounts:
-    routing_url: http://localhost:4001
+    routing_url: http://accounts:4001
     schema: 
       file: ../accounts/accounts-schema.graphql
   products:
-    routing_url: http://localhost:4002
+    routing_url: http://products:4002
     schema: 
       file: ../products/products-schema.graphql
   reviews:
-    routing_url: http://localhost:4003
+    routing_url: http://reviews:4003
     schema: 
       file: ../reviews/reviews-schema.graphql

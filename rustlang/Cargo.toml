@@ -4,3 +4,8 @@ members = [
     "src/products",
     "src/reviews",
 ]
+
+[dependencies]
+diesel = { version = "1.4.4", features = ["postgres"] }
+dotenv = "0.15.0"
+
