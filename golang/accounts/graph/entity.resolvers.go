@@ -6,8 +6,8 @@ package graph
 import (
 	"context"
 
-	"github.com/99designs/gqlgen/example/federation/accounts/graph/generated"
-	"github.com/99designs/gqlgen/example/federation/accounts/graph/model"
+	"github.com/jackedgson/apollo-federation-comparison/tree/master/golang/accounts/graph/generated"
+	"github.com/jackedgson/apollo-federation-comparison/tree/master/golang/accounts/graph/model"
 )
 
 func (r *entityResolver) FindEmailHostByID(ctx context.Context, id string) (*model.EmailHost, error) {

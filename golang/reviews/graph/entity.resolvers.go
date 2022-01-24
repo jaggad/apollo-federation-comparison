@@ -6,8 +6,8 @@ package graph
 import (
 	"context"
 
-	"github.com/99designs/gqlgen/example/federation/reviews/graph/generated"
-	"github.com/99designs/gqlgen/example/federation/reviews/graph/model"
+	"github.com/jackedgson/apollo-federation-comparison/tree/master/golang/reviews/graph/generated"
+	"github.com/jackedgson/apollo-federation-comparison/tree/master/golang/reviews/graph/model"
 )
 
 func (r *entityResolver) FindProductByManufacturerIDAndID(ctx context.Context, manufacturerID string, id string) (*model.Product, error) {

@@ -6,8 +6,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/99designs/gqlgen/example/federation/products/graph"
-	"github.com/99designs/gqlgen/example/federation/products/graph/generated"
+	"github.com/jackedgson/apollo-federation-comparison/tree/master/golang/products/graph"
+	"github.com/jackedgson/apollo-federation-comparison/tree/master/golang/products/graph/generated"
+
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/handler/debug"
 	"github.com/99designs/gqlgen/graphql/playground"

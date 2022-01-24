@@ -11,7 +11,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/99designs/gqlgen/example/federation/reviews/graph/model"
+	"github.com/jackedgson/apollo-federation-comparison/tree/master/golang/reviews/graph/model"
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
 	"github.com/99designs/gqlgen/plugin/federation/fedruntime"

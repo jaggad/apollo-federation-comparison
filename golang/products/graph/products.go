@@ -1,6 +1,6 @@
 package graph
 
-import "github.com/99designs/gqlgen/example/federation/products/graph/model"
+import "github.com/jackedgson/apollo-federation-comparison/tree/master/golang/products/graph/model"
 
 var hats = []*model.Product{
 	{
